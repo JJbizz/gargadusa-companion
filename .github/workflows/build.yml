@@ -1,0 +1,181 @@
+name: Build & Release Gargadusa Companion
+
+on:
+  push:
+    tags:
+      - 'v*'          # triggers on v1.0.0, v1.2.3, etc.
+  workflow_dispatch:  # allows manual run from GitHub Actions UI
+
+permissions:
+  contents: write     # needed to create GitHub Releases
+
+jobs:
+  # ─────────────────────────────────────────────
+  # Windows build (runs on GitHub-hosted Windows runner)
+  # ─────────────────────────────────────────────
+  build-windows:
+    name: Build – Windows
+    runs-on: windows-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Verify Windows icon
+        run: |
+          $size = (Get-Item "assets\icon.ico").Length
+          Write-Host "icon.ico size: $size bytes"
+        shell: pwsh
+
+      - name: Build Windows installers
+        run: npm run build:win
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Upload Windows artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: windows-build
+          path: |
+            dist/*.exe
+          if-no-files-found: warn
+
+  # ─────────────────────────────────────────────
+  # macOS build (runs on GitHub-hosted macOS runner)
+  # ─────────────────────────────────────────────
+  build-macos:
+    name: Build – macOS
+    runs-on: macos-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Pillow for icon verification
+        run: pip3 install Pillow --break-system-packages
+
+      - name: Verify macOS icon
+        run: |
+          echo "icon.png:   $(wc -c < assets/icon.png) bytes"
+          echo "icon@2x.png: $(wc -c < assets/icon@2x.png) bytes"
+          python3 -c "from PIL import Image; i=Image.open('assets/icon.png'); print('icon.png size:', i.size)"
+          python3 -c "from PIL import Image; i=Image.open('assets/icon@2x.png'); print('icon@2x.png size:', i.size)"
+
+      - name: Build macOS DMG
+        run: npm run build:mac
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # Uncomment and add secrets if you have an Apple Developer certificate:
+          # CSC_LINK: ${{ secrets.APPLE_CERTIFICATE_P12_BASE64 }}
+          # CSC_KEY_PASSWORD: ${{ secrets.APPLE_CERTIFICATE_PASSWORD }}
+          # APPLE_ID: ${{ secrets.APPLE_ID }}
+          # APPLE_APP_SPECIFIC_PASSWORD: ${{ secrets.APPLE_APP_SPECIFIC_PASSWORD }}
+          # APPLE_TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
+
+      - name: Upload macOS artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: macos-build
+          path: |
+            dist/*.dmg
+          if-no-files-found: warn
+
+  # ─────────────────────────────────────────────
+  # Linux build (runs on GitHub-hosted Ubuntu runner)
+  # ─────────────────────────────────────────────
+  build-linux:
+    name: Build – Linux
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Verify Linux icon directory
+        run: |
+          echo "Linux icon sizes present:"
+          ls -lh assets/icons/
+
+      - name: Build Linux packages
+        run: npm run build:linux
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Upload Linux artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: linux-build
+          path: |
+            dist/*.AppImage
+            dist/*.deb
+          if-no-files-found: warn
+
+  # ─────────────────────────────────────────────
+  # Release: collect artifacts & publish GitHub Release
+  # ─────────────────────────────────────────────
+  release:
+    name: Publish GitHub Release
+    needs: [build-windows, build-macos, build-linux]
+    runs-on: ubuntu-latest
+    if: startsWith(github.ref, 'refs/tags/')
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Download all build artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: release-artifacts
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          name: "Gargadusa Companion ${{ github.ref_name }}"
+          body: |
+            ## Gargadusa Companion ${{ github.ref_name }}
+
+            Guild Synergy Optimizer & Save Editor
+
+            ### Downloads
+            | Platform | File |
+            |----------|------|
+            | 🪟 Windows | `.exe` installer or portable |
+            | 🍎 macOS   | `.dmg` disk image           |
+            | 🐧 Linux   | `.AppImage` or `.deb`        |
+
+            ### What's New
+            See [CHANGELOG.md](CHANGELOG.md) for details.
+          draft: false
+          prerelease: false
+          files: |
+            release-artifacts/**/*.exe
+            release-artifacts/**/*.dmg
+            release-artifacts/**/*.zip
+            release-artifacts/**/*.AppImage
+            release-artifacts/**/*.deb
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
