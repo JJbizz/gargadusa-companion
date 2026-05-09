@@ -1,22 +1,29 @@
+# Gargadusa Companion
+
+**Guild Synergy Optimizer & Save Editor** — Version 1.0.0
+A free, community-built companion tool for Gargadusa players.
+
+---
+
 ## Table of Contents
 
-1. [[Installation & First Launch](https://claude.ai/chat/5e4ffd7f-edd0-422d-a9bf-d7180014056e#1-installation--first-launch)](#1-installation--first-launch)
-2. [[Interface Overview](https://claude.ai/chat/5e4ffd7f-edd0-422d-a9bf-d7180014056e#2-interface-overview)](#2-interface-overview)
-3. [[Synergy Optimizer](https://claude.ai/chat/5e4ffd7f-edd0-422d-a9bf-d7180014056e#3-synergy-optimizer)](#3-synergy-optimizer)
-   - [[Single Party Finder](https://claude.ai/chat/5e4ffd7f-edd0-422d-a9bf-d7180014056e#single-party-finder)](#single-party-finder)
-   - [[Raid Roster Planner](https://claude.ai/chat/5e4ffd7f-edd0-422d-a9bf-d7180014056e#raid-roster-planner)](#raid-roster-planner)
-4. [[Save Editor](https://claude.ai/chat/5e4ffd7f-edd0-422d-a9bf-d7180014056e#4-save-editor)](#4-save-editor)
-   - [[Loading a Save File](https://claude.ai/chat/5e4ffd7f-edd0-422d-a9bf-d7180014056e#loading-a-save-file)](#loading-a-save-file)
-   - [[Navigating the Entity List](https://claude.ai/chat/5e4ffd7f-edd0-422d-a9bf-d7180014056e#navigating-the-entity-list)](#navigating-the-entity-list)
-   - [[Editing an Entity](https://claude.ai/chat/5e4ffd7f-edd0-422d-a9bf-d7180014056e#editing-an-entity)](#editing-an-entity)
-   - [[Guild Info & Buildings](https://claude.ai/chat/5e4ffd7f-edd0-422d-a9bf-d7180014056e#guild-info--buildings)](#guild-info--buildings)
-   - [[Rival Adventurers](https://claude.ai/chat/5e4ffd7f-edd0-422d-a9bf-d7180014056e#rival-adventurers)](#rival-adventurers)
-   - [[Creating New Units](https://claude.ai/chat/5e4ffd7f-edd0-422d-a9bf-d7180014056e#creating-new-units)](#creating-new-units)
-   - [[Deleting Units](https://claude.ai/chat/5e4ffd7f-edd0-422d-a9bf-d7180014056e#deleting-units)](#deleting-units)
-   - [[Exporting Your Save](https://claude.ai/chat/5e4ffd7f-edd0-422d-a9bf-d7180014056e#exporting-your-save)](#exporting-your-save)
-5. [[Settings & Preferences](https://claude.ai/chat/5e4ffd7f-edd0-422d-a9bf-d7180014056e#5-settings--preferences)](#5-settings--preferences)
-6. [[Keyboard Shortcuts & Tips](https://claude.ai/chat/5e4ffd7f-edd0-422d-a9bf-d7180014056e#6-keyboard-shortcuts--tips)](#6-keyboard-shortcuts--tips)
-7. [[Troubleshooting](https://claude.ai/chat/5e4ffd7f-edd0-422d-a9bf-d7180014056e#7-troubleshooting)](#7-troubleshooting)
+1. [Installation & First Launch](#1-installation--first-launch)
+2. [Interface Overview](#2-interface-overview)
+3. [Synergy Optimizer](#3-synergy-optimizer)
+   - [Single Party Finder](#single-party-finder)
+   - [Raid Roster Planner](#raid-roster-planner)
+4. [Save Editor](#4-save-editor)
+   - [Loading a Save File](#loading-a-save-file)
+   - [Navigating the Entity List](#navigating-the-entity-list)
+   - [Editing an Entity](#editing-an-entity)
+   - [Guild Info & Buildings](#guild-info--buildings)
+   - [Rival Adventurers](#rival-adventurers)
+   - [Creating New Units](#creating-new-units)
+   - [Deleting Units](#deleting-units)
+   - [Exporting Your Save](#exporting-your-save)
+5. [Settings & Preferences](#5-settings--preferences)
+6. [Keyboard Shortcuts & Tips](#6-keyboard-shortcuts--tips)
+7. [Troubleshooting](#7-troubleshooting)
 
 ---
 
@@ -26,7 +33,7 @@ There are four ways to run Gargadusa Companion. Choose the one that suits you.
 
 ### Option A — Portable `.exe` (recommended)
 
-Download the standalone `.exe` from the Releases page and run it directly — no installation required. The exe has access to your save folder, so you can set a location and export directly to your Gargadusa saves directory without any extra steps.
+Download the standalone `.exe` from the Releases page and run it directly — no installation required. The app has full access to your file system, so you can set a save folder and export directly to your Gargadusa saves directory without any extra steps.
 
 | Platform | File |
 |----------|------|
@@ -34,11 +41,10 @@ Download the standalone `.exe` from the Releases page and run it directly — no
 | macOS    | `.dmg` |
 | Linux    | `.AppImage` or `.deb` |
 
-**AI suggested macOS security note, unverified:** If macOS blocks the app on first launch ("unidentified developer"), right-click the app and choose **Open**, then confirm. This is a standard Gatekeeper prompt for unsigned community tools. If you see "App is damaged and can't be opened" instead, run the following in Terminal and try again:
-
-```
-xattr -cr /Applications/Gargadusa\ Companion.app
-```
+> **macOS security note:** If macOS blocks the app on first launch ("unidentified developer"), right-click the app and choose **Open**, then confirm. This is a standard Gatekeeper prompt for unsigned community tools. If you see "App is damaged and can't be opened" instead, run the following in Terminal and try again:
+> ```
+> xattr -cr /Applications/Gargadusa\ Companion.app
+> ```
 
 ### Option B — Installed desktop app
 
@@ -53,17 +59,16 @@ If you'd rather not download an executable at all, you can open `app.html` direc
 3. Press `Ctrl+O` (or `Cmd+O` on Mac) and navigate to `app.html` inside the unzipped folder — or drag and drop the file into a browser tab.
 4. The tool loads immediately. No server, no install, no internet needed.
 
-**Important limitations when running in-browser:**
-
-- The **Set Folder** button (direct folder export) is not available. Instead, use the **Download** button to save the exported file, then move it manually to your Gargadusa saves folder.
-- The Raid Roster Planner's direct export works the same way — use **Download (Browser)** rather than the folder export.
-- Other browsers (Firefox, Safari) may work but are not officially supported. Chromium and Edge are recommended because of their full implementation of the File System Access API.
+> **Important limitations when running in-browser:**
+> - The **Set Folder** button (direct folder export) is not available. Instead, use the **Download** button to save the exported file, then move it manually to your Gargadusa saves folder.
+> - The Raid Roster Planner's direct export works the same way — use **Download (Browser)** rather than the folder export.
+> - Other browsers (Firefox, Safari) may work but are not officially supported. Chromium and Edge are recommended because of their full implementation of the File System Access API.
 
 ### Option D — Run from source
 
-Requires [[Node.js](https://nodejs.org/)](https://nodejs.org/) v18 or newer.
+Requires [Node.js](https://nodejs.org/) v18 or newer.
 
-```
+```bash
 git clone https://github.com/JJbizz/gargadusa-companion.git
 cd gargadusa-companion
 npm install
@@ -129,7 +134,7 @@ Alternatively, add adventurers to the queue manually using the class picker — 
 
 **Running the planner** — Click **Optimize All Parties**. The planner assigns adventurers to parties to maximize synergy across all of them simultaneously. Results appear below, each party showing its synergy score, average OVR, and member breakdown.
 
-**Exporting results to your save** — If you imported a save, you can write the optimized party assignments back to it. Set the save folder and slot number the same way as the Save Editor (see [[Exporting Your Save](https://claude.ai/chat/5e4ffd7f-edd0-422d-a9bf-d7180014056e#exporting-your-save)](#exporting-your-save) below), then click **Export** (desktop/portable) or **Download (Browser)** (browser/HTML mode). A backup of your original file is created automatically.
+**Exporting results to your save** — If you imported a save, you can write the optimized party assignments back to it. Set the save folder and slot number the same way as the Save Editor (see [Exporting Your Save](#exporting-your-save) below), then click **Export** (desktop/portable) or **Download (Browser)** (browser/HTML mode). A backup of your original file is created automatically.
 
 ---
 
@@ -155,7 +160,7 @@ Once a save is loaded, a status bar in the toolbar displays the guild name, tier
 The left sidebar shows all entities in your save. Two view tabs sit at the top of the sidebar:
 
 - **Guild** — Shows your own guild's entities (default).
-- **Rivals** — Switches to rival guild members (read-only; see [[Rival Adventurers](https://claude.ai/chat/5e4ffd7f-edd0-422d-a9bf-d7180014056e#rival-adventurers)](#rival-adventurers)).
+- **Rivals** — Switches to rival guild members (read-only; see [Rival Adventurers](#rival-adventurers)).
 
 Below the view tabs:
 
@@ -367,8 +372,14 @@ A save file must be loaded before you can export. Click **Import** and load a sa
 **My changes aren't showing after export**
 Check that the slot number matches the file the game reads. Also verify the save folder path is the actual folder the game looks in (not a subfolder or desktop copy). In browser/HTML mode, make sure you moved the downloaded file to the correct location.
 
+**A unit's type or profession looks wrong after loading**
+The tool silently repairs certain legacy field values on load (e.g. old "overseer" entries become "foreman", mismatched profession types for crafters/gatherers are corrected). If you see unexpected values, this may be why — review the entity and adjust as needed before exporting.
+
 **My staff didn't appear after adding them**
 Make sure your guild rank is high enough, and your relevant buildings are unlocked *before* trying to add limited role staff. If done without the proper permissions on the import, it won't export right. Either return to the backup save (recommended), or delete the missing character entries from the newest import.
+
+**Deleting a unit caused unexpected behavior**
+Units that are referenced by active quests or party assignments may leave orphaned references in the save. Check party and quest data after deleting units that were actively assigned.
 
 **Browser mode: the Set Folder button doesn't work**
 Direct folder access is only available in the portable or installed desktop app. Use **Download** to save the file and move it manually to your saves folder.
@@ -377,4 +388,4 @@ Direct folder access is only available in the portable or installed desktop app.
 
 ## License & Credits
 
-This is a free tool developed by the community for Gargadusa players by Gargadusa players, and is not affiliated with or endorsed by the game's developers. Use at your game's own risk and always keep save backups.
+This is a free tool developed by the community for Gargadusa players by Gargadusa players, and is not affiliated with or endorsed by the game's developers. Use at your own risk and always keep save backups.
