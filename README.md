@@ -1,7 +1,7 @@
-# Gargadusa Companion — User Guide
+# Gargadusa Companion
 
-> **Guild Synergy Optimizer & Save Editor** — Version 1.0.0
-> A free, community-built companion tool for Gargadusa players.
+**Guild Synergy Optimizer & Save Editor** — Version 1.0.0
+A free, community-built companion tool for Gargadusa players.
 
 ---
 
@@ -31,17 +31,15 @@
 
 There are four ways to run Gargadusa Companion. Choose the one that suits you.
 
----
-
 ### Option A — Portable `.exe` (recommended)
 
 Download the standalone `.exe` from the Releases page and run it directly — no installation required. The app has full access to your file system, so you can set a save folder and export directly to your Gargadusa saves directory without any extra steps.
 
 | Platform | File |
-| --- | --- |
-| Windows | Portable `.exe` |
-| macOS | `.dmg` |
-| Linux | `.AppImage` or `.deb` |
+|----------|------|
+| Windows  | Portable `.exe` |
+| macOS    | `.dmg` |
+| Linux    | `.AppImage` or `.deb` |
 
 **macOS security note:** If macOS blocks the app on first launch ("unidentified developer"), right-click the app and choose **Open**, then confirm. This is a standard Gatekeeper prompt for unsigned community tools. If you see "App is damaged and can't be opened" instead, run the following in Terminal and try again:
 
@@ -49,13 +47,9 @@ Download the standalone `.exe` from the Releases page and run it directly — no
 xattr -cr /Applications/Gargadusa\ Companion.app
 ```
 
----
-
 ### Option B — Installed desktop app
 
 If you prefer a traditional installation (Start Menu shortcut, uninstaller entry in Windows settings, etc.), download and run the `.exe` installer from the Releases page. The installed app is functionally identical to the portable version.
-
----
 
 ### Option C — Open `app.html` directly in a browser
 
@@ -68,11 +62,9 @@ If you'd rather not download an executable at all, you can open `app.html` direc
 
 **Important limitations when running in-browser:**
 
-- The **📁 Set Folder** button (direct folder export) is not available. Instead, use the **⬇ Download** button to save the exported file, then move it manually to your Gargadusa saves folder.
-- The Raid Roster Planner's direct export works the same way — use **🌐 Download (Browser)** rather than the folder export.
+- The **Set Folder** button (direct folder export) is not available. Instead, use the **Download** button to save the exported file, then move it manually to your Gargadusa saves folder.
+- The Raid Roster Planner's direct export works the same way — use **Download (Browser)** rather than the folder export.
 - Other browsers (Firefox, Safari) may work but are not officially supported. Chromium and Edge are recommended because of their full implementation of the File System Access API.
-
----
 
 ### Option D — Run from source
 
@@ -91,10 +83,10 @@ npm start
 
 The tool is divided into two main tabs, accessible at the top of the window:
 
-- **⚔️ Synergy Optimizer** — Plan parties and raid rosters without touching your save file.
-- **🏰 Save Editor** — Load, inspect, modify, and export your actual Gargadusa save files.
+- **Synergy Optimizer** — Plan parties and raid rosters without touching your save file.
+- **Save Editor** — Load, inspect, modify, and export your actual Gargadusa save files.
 
-A **☀️ / 🌙 theme toggle** in the top-right corner switches between dark and light mode. Your preference is saved between sessions.
+A theme toggle in the top-right corner switches between dark and light mode. Your preference is saved between sessions.
 
 ---
 
@@ -111,10 +103,10 @@ This tab helps you find the single highest-synergy party from a pool of adventur
 **Slot Templates** — Each slot in the party can be:
 
 - A **specific class** (e.g. Holy Paladin, Shadow Rogue) — drag or click a class from the class list.
-- A **role placeholder** — drag 🛡️ Tank, 💚 Healer, ⚔️ Melee, 🎯 Ranged, or 🔥 DPS to fill a slot with any class that fits that role.
+- A **role placeholder** — drag Tank, Healer, Melee, Ranged, or DPS to fill a slot with any class that fits that role.
 - A **dual-class adventurer** — use the Dual-Class section to combine two classes into one slot. The adventurer counts as both classes for every synergy calculation.
 
-**Banning classes** — Click any class in the roster list to toggle it as **banned** (greyed out, crossed through). Banned classes are excluded from optimization. Use **Ban All / Unban All** per role section or the global **🚫 Ban All Roster** button.
+**Banning classes** — Click any class in the roster list to toggle it as **banned** (greyed out, crossed through). Banned classes are excluded from optimization. Use **Ban All / Unban All** per role section or the global **Ban All Roster** button.
 
 **Finding the best party** — Once your slots are configured, click **Find Best Raid Parties**. The optimizer runs through all valid class combinations and ranks them by total synergy score, displaying the top results.
 
@@ -132,7 +124,7 @@ This tab optimizes parties across your entire guild roster simultaneously — us
 
 The planner can pull directly from your save file so you don't have to enter adventurers by hand:
 
-1. Click **📂 Import Save File (JSON)** in the Raid Roster Planner section.
+1. Click **Import Save File (JSON)** in the Raid Roster Planner section.
 2. Select your `save_1.json` (or whichever slot) from your Gargadusa saves folder.
 3. If successful, the status bar shows how many adventurers were imported.
 
@@ -142,9 +134,9 @@ Alternatively, add adventurers to the queue manually using the class picker — 
 
 **Party size & composition** — Set how many members per party. Toggle **Require Tank + Healer + DPS** to enforce a balanced composition in every output party.
 
-**Running the planner** — Click **🧮 Optimize All Parties**. The planner assigns adventurers to parties to maximize synergy across all of them simultaneously. Results appear below, each party showing its synergy score, average OVR, and member breakdown.
+**Running the planner** — Click **Optimize All Parties**. The planner assigns adventurers to parties to maximize synergy across all of them simultaneously. Results appear below, each party showing its synergy score, average OVR, and member breakdown.
 
-**Exporting results to your save** — If you imported a save, you can write the optimized party assignments back to it. Set the save folder and slot number the same way as the Save Editor (see [Exporting Your Save](#exporting-your-save) below), then click **Export** (desktop/portable) or **🌐 Download (Browser)** (browser/HTML mode). A backup of your original file is created automatically.
+**Exporting results to your save** — If you imported a save, you can write the optimized party assignments back to it. Set the save folder and slot number the same way as the Save Editor (see [Exporting Your Save](#exporting-your-save) below), then click **Export** (desktop/portable) or **Download (Browser)** (browser/HTML mode). A backup of your original file is created automatically.
 
 ---
 
@@ -152,13 +144,11 @@ Alternatively, add adventurers to the queue manually using the class picker — 
 
 The Save Editor lets you directly inspect and modify Gargadusa save files. Changes you make here are written back to disk when you export.
 
-> ⚠️ **Always keep backups.** The tool creates a backup file automatically on every export, but it is good practice to keep your own copies before making large changes. Editing saves may cause unexpected behavior — use at your own risk.
-
----
+> **Always keep backups.** The tool creates a backup file automatically on every export, but it is good practice to keep your own copies before making large changes. Editing saves may cause unexpected behavior — use at your own risk.
 
 ### Loading a Save File
 
-1. Go to the **🏰 Save Editor** tab.
+1. Go to the **Save Editor** tab.
 2. Click **Import** in the top toolbar.
 3. Navigate to your Gargadusa saves folder and select the `.json` save file (e.g. `save_1.json`).
 4. The tool parses the file and loads all entities. A summary shows how many guild entities and rival adventurers were found. If the file contains any structural issues (type mismatches, legacy field names), the tool silently auto-repairs them on load.
@@ -171,8 +161,8 @@ Once a save is loaded, a status bar in the toolbar displays the guild name, tier
 
 The left sidebar shows all entities in your save. Two view tabs sit at the top of the sidebar:
 
-- **🏰 Guild** — Shows your own guild's entities (default).
-- **⚔️ Rivals** — Switches to rival guild members (read-only; see [Rival Adventurers](#rival-adventurers)).
+- **Guild** — Shows your own guild's entities (default).
+- **Rivals** — Switches to rival guild members (read-only; see [Rival Adventurers](#rival-adventurers)).
 
 Below the view tabs:
 
@@ -180,17 +170,7 @@ Below the view tabs:
 - **Category tabs** — Filter by All, Adventurers, Staff, Scouts, Crafters, or Gatherers.
 - **Entity count** — Shows how many entities match your current filter out of the total.
 
-**Filters** — Click the **⚙ Filters** button to expand the filter panel and narrow by:
-
-- Class / Profession
-- Potential tier (S-Tier through F-Tier)
-- OVR range (min / max)
-- Minimum level
-- Maximum age
-- Rarity
-- Status (available, injured, resting, etc.)
-- Gender
-- Role
+**Filters** — Click the **Filters** button to expand the filter panel and narrow by class/profession, potential tier (S-Tier through F-Tier), OVR range, minimum level, maximum age, rarity, status, gender, and role.
 
 **Sorting** — Use the **Sort** dropdown to order the list by name, OVR, level, age, potential, class, wage, or status.
 
@@ -238,7 +218,7 @@ Wage, contract years, requested wage, preferred term, negotiation cooldown, and 
 
 #### Traits Tab *(adventurers only)*
 
-Manage zodiac traits and flaws. Displays current traits as removable tags — click the ✕ on any trait to remove it. A **Trait Encyclopedia** button opens a searchable full-screen reference of all traits and flaws (also accessible from the **📜 Traits** toolbar button). Click any entry in the encyclopedia to add it to the selected entity.
+Manage zodiac traits and flaws. Displays current traits as removable tags — click the **✕** on any trait to remove it. A **Trait Encyclopedia** button opens a searchable full-screen reference of all traits and flaws (also accessible from the **Traits** toolbar button). Click any entry in the encyclopedia to add it to the selected entity.
 
 #### Career Tab *(adventurers only)*
 
@@ -263,12 +243,12 @@ A chronological log of all recent activity for this entity (quests, training, in
 
 ---
 
-### Reference Panels (Toolbar Buttons)
+### Reference Panels
 
-Two toolbar buttons open full-screen reference panels that are available at any time, regardless of which entity is selected:
+Two toolbar buttons open full-screen reference panels available at any time, regardless of which entity is selected:
 
-- **📚 Classes** — A searchable database of all 42 classes, filterable by rarity. Also includes a full **Class Synergies** reference listing all 17 synergy combos with their bonus percentages and class requirements.
-- **📜 Traits** — The **Trait & Flaw Encyclopedia**, showing all available traits and flaws with descriptions. Toggle between the Traits and Flaws lists using the tabs at the top. Clicking any entry adds it to the currently selected entity (if one is selected).
+- **Classes** — A searchable database of all 42 classes, filterable by rarity. Also includes a full **Class Synergies** reference listing all 17 synergy combos with their bonus percentages and class requirements.
+- **Traits** — The **Trait & Flaw Encyclopedia**, showing all available traits and flaws with descriptions. Toggle between the Traits and Flaws lists using the tabs at the top. Clicking any entry adds it to the currently selected entity (if one is selected).
 
 ---
 
@@ -276,40 +256,34 @@ Two toolbar buttons open full-screen reference panels that are available at any 
 
 Click the **Guild** button in the Save Editor toolbar to open the Guild Info panel as an overlay.
 
-**General** — Editable fields for:
-
-- Guild Name
-- Guild Tier
-- Gold, Reputation, Prestige
-- Year, Season (0–3), Week
-- Difficulty
+**General** — Editable fields for guild name, guild tier, gold, reputation, prestige, year, season (0–3), week, and difficulty.
 
 > The **Gold**, **Rep**, and **Prestige** fields in the toolbar header also let you edit these three values at a glance without opening the Guild panel.
 
-**Rankings** — Editable fields for current Ranking Points, Year-End Points, Quests/Raids/Tower Runs completed this year.
+**Rankings** — Editable fields for current Ranking Points, Year-End Points, and quests/raids/tower runs completed this year.
 
 **Ranking History** — If your save includes past seasonal competition results, they appear as an editable table. Every field (rank, tier, points, gold reward, prestige reward, bonus) can be changed inline.
 
 **Year Stats** — If your save includes a year stats block, it appears here as editable fields covering quests, raids, tower floors, gold earned/spent, adventurers recruited/lost/retired, injuries, levels gained, reputation changes, materials gathered, items crafted, and trades completed.
 
-**Buildings** — All buildings in your guild are listed with their current tier. Use the upgrade button to increment a tier (construction history is recorded automatically), or **✕ Remove** to delete a building entirely.
+**Buildings** — All buildings in your guild are listed with their current tier. Use the upgrade button to increment a tier (construction history is recorded automatically), or **Remove** to delete a building entirely.
 
 ---
 
 ### Rival Adventurers
 
-Click the **⚔️ Rivals** tab in the sidebar to switch the entity list to rival guild members. Use the guild dropdown that appears to filter by a specific rival guild. Rivals are fully read-only — they cannot be edited or deleted.
+Click the **Rivals** tab in the sidebar to switch the entity list to rival guild members. Use the guild dropdown that appears to filter by a specific rival guild. Rivals are fully read-only — they cannot be edited or deleted.
 
 ---
 
 ### Creating New Units
 
-Four **➕ Create** buttons appear in the Save Editor toolbar (enabled once a save is loaded):
+Four **Create** buttons appear in the Save Editor toolbar (enabled once a save is loaded):
 
-- **➕ Adventurer** — Creates a new adventurer with a class picker, stat array, and all standard adventurer fields. The new unit is added to the `roster` array in your save.
-- **➕ Staff** — Creates a new staff member with a role selector and skill field.
-- **➕ Gatherer** — Creates a new gatherer with a type selector.
-- **➕ Crafter** — Creates a new crafter with a profession selector.
+- **Adventurer** — Creates a new adventurer with a class picker, stat array, and all standard adventurer fields. The new unit is added to the `roster` array in your save.
+- **Staff** — Creates a new staff member with a role selector and skill field.
+- **Gatherer** — Creates a new gatherer with a type selector.
+- **Crafter** — Creates a new crafter with a profession selector.
 
 After filling out the creation form, click **Create** to add the unit to the save and the entity list. The new unit is immediately selected and ready to edit.
 
@@ -319,20 +293,20 @@ After filling out the creation form, click **Create** to add the unit to the sav
 
 You can permanently remove any guild entity from your save using three methods:
 
-**✕ button on the list** — Hover over any entity row in the sidebar. A small **✕** button appears on the right edge of the row. Click it to open the confirmation dialog.
+**Delete button on the list** — Hover over any entity row in the sidebar. A small **✕** button appears on the right edge of the row. Click it to open the confirmation dialog.
 
-**"✕ Delete" button in the detail panel** — When an entity is selected, a **✕ Delete** button appears in the top-right corner of their profile header.
+**Delete button in the detail panel** — When an entity is selected, a **Delete** button appears in the top-right corner of their profile header.
 
 **Delete key** — With an entity selected and focus not on a text field, press the `Delete` key on your keyboard.
 
 All three methods open a **confirmation dialog** showing the unit's name and source array. You must confirm before any deletion occurs:
 
-- Click **🗑️ Delete** or press `Enter` to confirm.
+- Click **Delete** or press `Enter` to confirm.
 - Click **Cancel** or press `Escape` to dismiss.
 
 Deleted units are removed from both the display list and the underlying save data array (e.g. `roster`, `staff`, `crafters`). They will not appear in the exported save file.
 
-> Rivals cannot be deleted — the ✕ button does not appear on rival entries.
+> Rivals cannot be deleted — the delete button does not appear on rival entries.
 
 ---
 
@@ -342,11 +316,11 @@ Once you're done editing, export the save back to disk.
 
 **Portable or installed app:**
 
-1. Click **📁 Set Folder** in the toolbar and select the folder where your Gargadusa saves live. This is remembered between sessions.
+1. Click **Set Folder** in the toolbar and select the folder where your Gargadusa saves live. This is remembered between sessions.
 2. Set the **Slot** number — this determines the output filename (`save_1.json`, `save_2.json`, etc.). The tool tries to auto-detect the slot from the filename of the imported file.
 3. Click **Export**.
 
-**Browser / HTML mode:** Direct folder access is not available in-browser. Click **⬇ Download** to download the file, then move it manually to your Gargadusa saves folder.
+**Browser / HTML mode:** Direct folder access is not available in-browser. Click **Download** to download the file, then move it manually to your Gargadusa saves folder.
 
 Either way, two files are produced:
 
@@ -360,9 +334,9 @@ An export status message confirms success or reports any errors.
 ## 5. Settings & Preferences
 
 | Setting | How to access |
-| --- | --- |
-| Dark / Light theme | ☀️ / 🌙 toggle, top-right of window |
-| Save folder | **📁 Set Folder** button in Save Editor toolbar |
+|---------|---------------|
+| Dark / Light theme | Theme toggle, top-right of window |
+| Save folder | **Set Folder** button in Save Editor toolbar |
 | Export slot number | **Slot** field in Save Editor toolbar |
 | Party size (Optimizer) | Party Size dropdown in Synergy Optimizer |
 | Saved search configs | **Save Search Config** / **Clear All Saved Configs** in Optimizer |
@@ -374,7 +348,7 @@ Configuration (save folder, theme, banned classes, party template) is persisted 
 ## 6. Keyboard Shortcuts & Tips
 
 | Key | Action |
-| --- | --- |
+|-----|--------|
 | `Delete` | Open delete confirmation for the currently selected entity (Save Editor) |
 | `Enter` | Confirm the delete dialog (when dialog is open) |
 | `Escape` | Close the delete dialog without deleting |
@@ -383,7 +357,7 @@ Configuration (save folder, theme, banned classes, party template) is persisted 
 
 - The **search bar** in the Save Editor filters across name, class, type, profession, guild name, and ID simultaneously — it's the fastest way to find a specific unit.
 - The **OVR badge** in the Save Editor entity list updates live as you edit stats — no need to save or refresh.
-- The **📚 Classes** panel is a handy reference even when you're not editing anything — it lists every class with its roles, tags, abilities, and synergies.
+- The **Classes** panel is a handy reference even when you're not editing anything — it lists every class with its roles, tags, abilities, and synergies.
 - In the Raid Roster Planner, adventurers already assigned to established (non-quest, non-training) parties are flagged automatically. You can choose to exclude them from optimization to preserve existing party compositions.
 - The **Score** badge on each output party in the optimizer represents the total synergy multiplier — higher is better. A synergy that stacks multiple times shows its tier in brackets (e.g. `[T2]`).
 
@@ -391,17 +365,23 @@ Configuration (save folder, theme, banned classes, party template) is persisted 
 
 ## 7. Troubleshooting
 
-**"Could not find a roster/adventurer list in this JSON"** The imported file doesn't appear to be a valid Gargadusa save, or uses an unexpected structure. Make sure you're selecting a save file from the correct game version.
+**"Could not find a roster/adventurer list in this JSON"**
+The imported file doesn't appear to be a valid Gargadusa save, or uses an unexpected structure. Make sure you're selecting a save file from the correct game version.
 
-**The Export button is greyed out** A save file must be loaded before you can export. Click **Import** and load a save first.
+**The Export button is greyed out**
+A save file must be loaded before you can export. Click **Import** and load a save first.
 
-**My changes aren't showing after export** Check that the slot number matches the file the game reads. Also verify the save folder path is the actual folder the game looks in (not a subfolder or desktop copy). In browser/HTML mode, make sure you moved the downloaded file to the correct location.
+**My changes aren't showing after export**
+Check that the slot number matches the file the game reads. Also verify the save folder path is the actual folder the game looks in (not a subfolder or desktop copy). In browser/HTML mode, make sure you moved the downloaded file to the correct location.
 
-**A unit's type or profession looks wrong after loading** The tool silently repairs certain legacy field values on load (e.g. old "overseer" entries become "foreman", mismatched profession types for crafters/gatherers are corrected). If you see unexpected values, this may be why — review the entity and adjust as needed before exporting.
+**A unit's type or profession looks wrong after loading**
+The tool silently repairs certain legacy field values on load (e.g. old "overseer" entries become "foreman", mismatched profession types for crafters/gatherers are corrected). If you see unexpected values, this may be why — review the entity and adjust as needed before exporting.
 
-**Deleting a unit caused unexpected behavior** Units that are referenced by active quests or party assignments may leave orphaned references in the save. Check party and quest data after deleting units that were actively assigned.
+**Deleting a unit caused unexpected behavior**
+Units that are referenced by active quests or party assignments may leave orphaned references in the save. Check party and quest data after deleting units that were actively assigned.
 
-**Browser mode: the 📁 Set Folder button doesn't work** Direct folder access is only available in the portable or installed desktop app. Use **⬇ Download** to save the file and move it manually to your saves folder.
+**Browser mode: the Set Folder button doesn't work**
+Direct folder access is only available in the portable or installed desktop app. Use **Download** to save the file and move it manually to your saves folder.
 
 ---
 
