@@ -5,7 +5,8 @@
   "description": "Gargadusa Companion — Guild Synergy Optimizer & Save Editor",
   "main": "main.js",
   "author": {
-    "name": "JJbizz"
+    "name": "JJbizz",
+    "email": "280232968+JJbizz@users.noreply.github.com"
   },
   "license": "UNLICENSED",
   "scripts": {
