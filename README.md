@@ -1,6 +1,6 @@
 # Gargadusa Companion — User Guide
 
-> **Guild Synergy Optimizer & Save Editor** — Version 1.0.0  
+> **Guild Synergy Optimizer & Save Editor** — Version 1.0.0
 > A free, community-built companion tool for Gargadusa players.
 
 ---
@@ -29,32 +29,37 @@
 
 ## 1. Installation & First Launch
 
-There are three ways to run Gargadusa Companion. Choose the one that suits you.
+There are four ways to run Gargadusa Companion. Choose the one that suits you.
 
 ---
 
-### Option A — Installed desktop app (recommended)
+### Option A — Portable `.exe` (recommended)
 
-Download the installer for your platform from the Releases page and run it. No account or internet connection required.
+Download the standalone `.exe` from the Releases page and run it directly — no installation required. The app has full access to your file system, so you can set a save folder and export directly to your Gargadusa saves directory without any extra steps.
 
 | Platform | File |
-|----------|------|
-| Windows | `.exe` installer or portable `.exe` |
+| --- | --- |
+| Windows | Portable `.exe` |
 | macOS | `.dmg` |
 | Linux | `.AppImage` or `.deb` |
 
-The installed app has full access to your file system, so setting a save folder and exporting directly to your Gargadusa saves directory works without any extra steps.
-
 **macOS security note:** If macOS blocks the app on first launch ("unidentified developer"), right-click the app and choose **Open**, then confirm. This is a standard Gatekeeper prompt for unsigned community tools. If you see "App is damaged and can't be opened" instead, run the following in Terminal and try again:
-```bash
+
+```
 xattr -cr /Applications/Gargadusa\ Companion.app
 ```
 
 ---
 
-### Option B — Open `app.html` directly in a browser
+### Option B — Installed desktop app
 
-If you'd rather not install anything, you can open `app.html` directly in **Chromium or Microsoft Edge** without any setup.
+If you prefer a traditional installation (Start Menu shortcut, uninstaller entry in Windows settings, etc.), download and run the `.exe` installer from the Releases page. The installed app is functionally identical to the portable version.
+
+---
+
+### Option C — Open `app.html` directly in a browser
+
+If you'd rather not download an executable at all, you can open `app.html` directly in **Chromium or Microsoft Edge** without any setup.
 
 1. Download and unzip the release archive.
 2. Open Chromium or Edge.
@@ -62,17 +67,18 @@ If you'd rather not install anything, you can open `app.html` directly in **Chro
 4. The tool loads immediately. No server, no install, no internet needed.
 
 **Important limitations when running in-browser:**
+
 - The **📁 Set Folder** button (direct folder export) is not available. Instead, use the **⬇ Download** button to save the exported file, then move it manually to your Gargadusa saves folder.
 - The Raid Roster Planner's direct export works the same way — use **🌐 Download (Browser)** rather than the folder export.
 - Other browsers (Firefox, Safari) may work but are not officially supported. Chromium and Edge are recommended because of their full implementation of the File System Access API.
 
 ---
 
-### Option C — Run from source
+### Option D — Run from source
 
 Requires [Node.js](https://nodejs.org/) v18 or newer.
 
-```bash
+```
 git clone https://github.com/JJbizz/gargadusa-companion.git
 cd gargadusa-companion
 npm install
@@ -103,6 +109,7 @@ This tab helps you find the single highest-synergy party from a pool of adventur
 **Party Size** — Select how many members your party will have (e.g. 3, 4, 5) from the dropdown. The slot grid updates automatically.
 
 **Slot Templates** — Each slot in the party can be:
+
 - A **specific class** (e.g. Holy Paladin, Shadow Rogue) — drag or click a class from the class list.
 - A **role placeholder** — drag 🛡️ Tank, 💚 Healer, ⚔️ Melee, 🎯 Ranged, or 🔥 DPS to fill a slot with any class that fits that role.
 - A **dual-class adventurer** — use the Dual-Class section to combine two classes into one slot. The adventurer counts as both classes for every synergy calculation.
@@ -137,7 +144,7 @@ Alternatively, add adventurers to the queue manually using the class picker — 
 
 **Running the planner** — Click **🧮 Optimize All Parties**. The planner assigns adventurers to parties to maximize synergy across all of them simultaneously. Results appear below, each party showing its synergy score, average OVR, and member breakdown.
 
-**Exporting results to your save** — If you imported a save, you can write the optimized party assignments back to it. Set the save folder and slot number the same way as the Save Editor (see [Exporting Your Save](#exporting-your-save) below), then click **Export** (desktop) or **🌐 Download (Browser)** (browser/HTML mode). A backup of your original file is created automatically.
+**Exporting results to your save** — If you imported a save, you can write the optimized party assignments back to it. Set the save folder and slot number the same way as the Save Editor (see [Exporting Your Save](#exporting-your-save) below), then click **Export** (desktop/portable) or **🌐 Download (Browser)** (browser/HTML mode). A backup of your original file is created automatically.
 
 ---
 
@@ -174,6 +181,7 @@ Below the view tabs:
 - **Entity count** — Shows how many entities match your current filter out of the total.
 
 **Filters** — Click the **⚙ Filters** button to expand the filter panel and narrow by:
+
 - Class / Profession
 - Potential tier (S-Tier through F-Tier)
 - OVR range (min / max)
@@ -198,6 +206,7 @@ When an entity is selected, their profile appears on the right. The tabs availab
 - **Staff / Scouts / Crafters / Gatherers:** Identity · Details · Activity
 
 #### Identity Tab
+
 The primary information panel. All fields are editable inline:
 
 - **Name** — The adventurer's display name.
@@ -218,20 +227,25 @@ The primary information panel. All fields are editable inline:
 For **staff members and scouts**, the Identity tab includes a **Switch Role** dropdown (Scout, Bartender, Receptionist, Astrologer, Instructor, Tactician, Foreman, Quartermaster, Treasurer) instead of a class switcher.
 
 #### Vitals Tab *(adventurers only)*
+
 Stat editor for adventurers. Displays all combat stats grouped by category (e.g. Offense, Defense), each editable individually. The OVR (Overall Rating) is calculated and displayed live. The **Max All** button sets every stat to the current stat cap.
 
 Each stat group also shows an optional **category ceiling** input — the maximum that stat group can reach for this adventurer. If the adventurer has level-up stat gains recorded, those appear alongside each stat as a secondary editable field.
 
 #### Contract Tab *(adventurers only)*
+
 Wage, contract years, requested wage, preferred term, negotiation cooldown, and sun/moon signs. Also shows relationship data — other entities this character has a relationship with, the relationship type, and its strength.
 
 #### Traits Tab *(adventurers only)*
+
 Manage zodiac traits and flaws. Displays current traits as removable tags — click the ✕ on any trait to remove it. A **Trait Encyclopedia** button opens a searchable full-screen reference of all traits and flaws (also accessible from the **📜 Traits** toolbar button). Click any entry in the encyclopedia to add it to the selected entity.
 
 #### Career Tab *(adventurers only)*
+
 Read-only career statistics: quests completed, total gold earned, total prestige earned, kills, and other lifetime stats. Also displays the entity's personal **Ambition** (current goal and reward on completion) and ranking history.
 
 #### Details Tab *(staff, scouts, crafters, gatherers)*
+
 This tab covers everything specific to non-adventurer entities:
 
 - **Skill** — An editable field with a visual progress bar showing how the current skill value compares to the potential ceiling. A range slider lets you scrub the value quickly. The tier name auto-updates as you change skill.
@@ -244,6 +258,7 @@ This tab covers everything specific to non-adventurer entities:
 - **Contract** — Wage and contract years for this unit.
 
 #### Activity Tab
+
 A chronological log of all recent activity for this entity (quests, training, injuries, etc.).
 
 ---
@@ -262,6 +277,7 @@ Two toolbar buttons open full-screen reference panels that are available at any 
 Click the **Guild** button in the Save Editor toolbar to open the Guild Info panel as an overlay.
 
 **General** — Editable fields for:
+
 - Guild Name
 - Guild Tier
 - Gold, Reputation, Prestige
@@ -310,6 +326,7 @@ You can permanently remove any guild entity from your save using three methods:
 **Delete key** — With an entity selected and focus not on a text field, press the `Delete` key on your keyboard.
 
 All three methods open a **confirmation dialog** showing the unit's name and source array. You must confirm before any deletion occurs:
+
 - Click **🗑️ Delete** or press `Enter` to confirm.
 - Click **Cancel** or press `Escape` to dismiss.
 
@@ -323,15 +340,16 @@ Deleted units are removed from both the display list and the underlying save dat
 
 Once you're done editing, export the save back to disk.
 
-**Desktop app:**
+**Portable or installed app:**
+
 1. Click **📁 Set Folder** in the toolbar and select the folder where your Gargadusa saves live. This is remembered between sessions.
 2. Set the **Slot** number — this determines the output filename (`save_1.json`, `save_2.json`, etc.). The tool tries to auto-detect the slot from the filename of the imported file.
 3. Click **Export**.
 
-**Browser / HTML mode:**
-Skip the folder step — click **⬇ Download** to download the file, then move it manually to your Gargadusa saves folder.
+**Browser / HTML mode:** Direct folder access is not available in-browser. Click **⬇ Download** to download the file, then move it manually to your Gargadusa saves folder.
 
 Either way, two files are produced:
+
 - **`save_N.json`** — Your updated save file.
 - **`save_N (backup).json`** — A copy of the original file before your changes, for safety.
 
@@ -342,7 +360,7 @@ An export status message confirms success or reports any errors.
 ## 5. Settings & Preferences
 
 | Setting | How to access |
-|---------|--------------|
+| --- | --- |
 | Dark / Light theme | ☀️ / 🌙 toggle, top-right of window |
 | Save folder | **📁 Set Folder** button in Save Editor toolbar |
 | Export slot number | **Slot** field in Save Editor toolbar |
@@ -356,12 +374,13 @@ Configuration (save folder, theme, banned classes, party template) is persisted 
 ## 6. Keyboard Shortcuts & Tips
 
 | Key | Action |
-|-----|--------|
+| --- | --- |
 | `Delete` | Open delete confirmation for the currently selected entity (Save Editor) |
 | `Enter` | Confirm the delete dialog (when dialog is open) |
 | `Escape` | Close the delete dialog without deleting |
 
 **Tips:**
+
 - The **search bar** in the Save Editor filters across name, class, type, profession, guild name, and ID simultaneously — it's the fastest way to find a specific unit.
 - The **OVR badge** in the Save Editor entity list updates live as you edit stats — no need to save or refresh.
 - The **📚 Classes** panel is a handy reference even when you're not editing anything — it lists every class with its roles, tags, abilities, and synergies.
@@ -372,23 +391,17 @@ Configuration (save folder, theme, banned classes, party template) is persisted 
 
 ## 7. Troubleshooting
 
-**"Could not find a roster/adventurer list in this JSON"**
-The imported file doesn't appear to be a valid Gargadusa save, or uses an unexpected structure. Make sure you're selecting a save file from the correct game version.
+**"Could not find a roster/adventurer list in this JSON"** The imported file doesn't appear to be a valid Gargadusa save, or uses an unexpected structure. Make sure you're selecting a save file from the correct game version.
 
-**The Export button is greyed out**
-A save file must be loaded before you can export. Click **Import** and load a save first.
+**The Export button is greyed out** A save file must be loaded before you can export. Click **Import** and load a save first.
 
-**My changes aren't showing after export**
-Check that the slot number matches the file the game reads. Also verify the save folder path is the actual folder the game looks in (not a subfolder or desktop copy). In browser/HTML mode, make sure you moved the downloaded file to the correct location.
+**My changes aren't showing after export** Check that the slot number matches the file the game reads. Also verify the save folder path is the actual folder the game looks in (not a subfolder or desktop copy). In browser/HTML mode, make sure you moved the downloaded file to the correct location.
 
-**A unit's type or profession looks wrong after loading**
-The tool silently repairs certain legacy field values on load (e.g. old "overseer" entries become "foreman", mismatched profession types for crafters/gatherers are corrected). If you see unexpected values, this may be why — review the entity and adjust as needed before exporting.
+**A unit's type or profession looks wrong after loading** The tool silently repairs certain legacy field values on load (e.g. old "overseer" entries become "foreman", mismatched profession types for crafters/gatherers are corrected). If you see unexpected values, this may be why — review the entity and adjust as needed before exporting.
 
-**Deleting a unit caused unexpected behavior**
-Units that are referenced by active quests or party assignments may leave orphaned references in the save. Check party and quest data after deleting units that were actively assigned.
+**Deleting a unit caused unexpected behavior** Units that are referenced by active quests or party assignments may leave orphaned references in the save. Check party and quest data after deleting units that were actively assigned.
 
-**Browser mode: the 📁 Set Folder button doesn't work**
-Direct folder access is only available in the installed desktop app. Use **⬇ Download** to save the file and move it manually to your saves folder.
+**Browser mode: the 📁 Set Folder button doesn't work** Direct folder access is only available in the portable or installed desktop app. Use **⬇ Download** to save the file and move it manually to your saves folder.
 
 ---
 
